@@ -3,15 +3,17 @@ extends CharacterBody2D
 class_name Player
 
 signal sanityChanged
-signal player_death()
+signal resourceChanged
+signal player_death
 
 const DEFAULT_BASE_RADIUS = 500 # distance where player is considered near/far base
+const DEFAULT_INVENTORY_LIMIT = 5 # cap for player resource count
 const DEFAULT_SANITY_CAP = 100 # cap at which sanity can no longer be increased
 const DEFAULT_SANITY_LOSS = -1 # rate of sanity loss when away from base in sanity per second
 const DEFAULT_SANITY_GAIN = 10 # rate of sanity gain when new base in sanity per second
 const LOGGING_FREQ_MSEC = 1000 # Period in milliseconds between logging outputs
 
-@export var inventory_limit = 5
+@export var inventory_limit = DEFAULT_INVENTORY_LIMIT
 @export var speed = 400
 
 var time_curr = 0
@@ -28,6 +30,7 @@ var sanity_loss_modifier = 0 # modifiers which increase or decrease the loss of 
 var sanity_gain_modifier = 0 # modifiers which increase or decrease sanity gain when near base
 var sanity_cap_modifier = 0 # modifiers which increase or decrease maximum sanity
 var base_redius_modifier = 0 # modifiers which increase or decrease the base's radius
+var inventory_limit_modifier = 0 # modifiers which increase or decrease player's maximum inventory
 
 @onready var base = get_parent().get_node('Base')
 
@@ -36,6 +39,7 @@ func update_resources():
 		on_resource.resource_count -= 1
 		resource_count += 1
 		print(str("Player now has ", resource_count, " resources."))
+		emit_signal("resourceChanged")
 		if on_resource.resource_count == 0:
 			print("Resource exhausted.")
 			on_resource.queue_free()
@@ -47,6 +51,7 @@ func update_base():
 	print(str("Player entered base with ", resource_count, " resources and dropped off resources."))
 	print("Base now has ", on_base.resource_count, " resources.")
 	resource_count = 0
+	emit_signal("resourceChanged")
 
 func get_input():
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cupwiadsvt60a"]
+[gd_scene load_steps=6 format=3 uid="uid://cupwiadsvt60a"]
 
 [ext_resource type="Script" path="res://sanity.gd" id="1_htj3k"]
 [ext_resource type="Texture2D" uid="uid://ck8j78rrviaho" path="res://healthbarUnder.png" id="1_mbdat"]
 [ext_resource type="Texture2D" uid="uid://dmmhc1ecnfod8" path="res://healthbarProgress.png" id="2_oqm1l"]
 [ext_resource type="FontFile" uid="uid://rg16im737d84" path="res://limbo_font__by_alex484000-d5dthys.ttf" id="3_vw54w"]
+[ext_resource type="Script" path="res://resource_hud.gd" id="5_rd813"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -21,14 +22,55 @@ texture_progress = ExtResource("2_oqm1l")
 script = ExtResource("1_htj3k")
 
 [node name="Label" type="Label" parent="TextureProgressBar"]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 103.0
-offset_right = 273.0
-offset_bottom = 154.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.5
+offset_right = 66.5
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_vw54w")
 theme_override_font_sizes/font_size = 50
 text = "Sanity
+"
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -424.0
+offset_bottom = 104.0
+grow_horizontal = 0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("1_mbdat")
+texture_progress = ExtResource("2_oqm1l")
+script = ExtResource("5_rd813")
+
+[node name="Label" type="Label" parent="TextureProgressBar2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -101.5
+offset_right = 101.5
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_vw54w")
+theme_override_font_sizes/font_size = 50
+text = "Resources
 "
 horizontal_alignment = 1
 vertical_alignment = 3
