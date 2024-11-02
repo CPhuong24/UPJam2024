@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2yb8dg345l18"]
+[gd_scene load_steps=7 format=3 uid="uid://d2yb8dg345l18"]
 
 [ext_resource type="Texture2D" uid="uid://cw0jvdjp61eeq" path="res://icon.svg" id="1_1e0h2"]
 [ext_resource type="Script" path="res://player.gd" id="1_nifug"]
+[ext_resource type="PackedScene" uid="uid://dm0aloqbelqr6" path="res://pause_menu.tscn" id="3_bilw1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltq0d"]
 size = Vector2(114, 114)
@@ -30,3 +31,5 @@ texture = ExtResource("1_1e0h2")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_nkbsc")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_bilw1")]
