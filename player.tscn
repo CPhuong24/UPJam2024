@@ -29,5 +29,4 @@ texture = ExtResource("1_1e0h2")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-blend_mode = 2
 texture = SubResource("GradientTexture2D_nkbsc")

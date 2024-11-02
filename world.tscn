@@ -69,7 +69,6 @@ tile_set = SubResource("TileSet_ufj86")
 [node name="Base" parent="." instance=ExtResource("7_117oc")]
 
 [node name="PointLight2D" type="PointLight2D" parent="Base"]
-blend_mode = 2
 texture = SubResource("GradientTexture2D_1lbyi")
 
 [node name="resource" parent="." instance=ExtResource("6_06ksj")]
