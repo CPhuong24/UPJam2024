@@ -1,6 +1,8 @@
 extends Area2D
 
 @export var resource_count = 0
+const DEFAULT_LIGHT_ENERGY = 0.5
+const LIGHT_ENERGY_CHANGE_RATE = 0.1
 @export var light_energy = 0.5
 @onready var player = get_parent().get_node('Player')
 @onready var light = get_node('PointLight2D')
@@ -28,15 +30,18 @@ func _on_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, l
 func _process(delta: float) -> void:
 	if current_durability > 0:
 		current_durability -= consumption_rate * delta
+		if light_energy < DEFAULT_LIGHT_ENERGY:
+			light_energy += LIGHT_ENERGY_CHANGE_RATE * delta
 	else:
 		if resource_count > 0:
 			resource_count -= 1
 			update()
 			current_durability = RESOURCE_DURABILITY
-			light.energy = light_energy
 			player.base_enabled = true
 		else:
 			current_durability = 0
 			player.base_enabled = false
-			light.energy = 0
+		if light_energy > 0:
+			light_energy -= LIGHT_ENERGY_CHANGE_RATE * delta
+	light.energy = min(max(light_energy, 0), DEFAULT_LIGHT_ENERGY)
 	progress_bar.value = current_durability
