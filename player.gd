@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
+class_name Player
+
+signal sanityChanged
+
 @export var speed = 400
 var resource_count = 0
 @export var inventory_limit = 5
 var on_resource = null
 var on_base = null
-var sanity = 100
 var distance_to_base = 0
 const DEFAULT_BASE_RADIUS = 500 # distance where player is considered near/far base
 const DEFAULT_SANITY_CAP = 100 # cap at which sanity can no longer be increased
@@ -15,6 +18,8 @@ var sanity_loss_modifier = 0 # modifiers which increase or decrease the loss of 
 var sanity_gain_modifier = 0 # modifiers which increase or decrease sanity gain when near base
 var sanity_cap_modifier = 0 # modifiers which increase or decrease maximum sanity
 var base_redius_modifier = 0 # modifiers which increase or decrease the base's radius
+var maxSanity = DEFAULT_SANITY_CAP
+var sanity = DEFAULT_SANITY_CAP
 @onready var base = get_parent().get_node('Base')
 signal player_death()
 
@@ -51,15 +56,22 @@ func _process(delta):
 		update_base()
 	# Sanity Calculations
 	distance_to_base = base.global_position.distance_to(global_position)
+	maxSanity = DEFAULT_SANITY_CAP + sanity_cap_modifier
+	var sanity_modifier = 0
 	if distance_to_base > (DEFAULT_BASE_RADIUS + base_redius_modifier):
-		sanity += (DEFAULT_SANITY_LOSS + sanity_loss_modifier) * delta
-		if sanity <= 0:
-			#player has died
-			emit_signal("player_death")
-			print("Player death signaled")
+		sanity_modifier = (DEFAULT_SANITY_LOSS + sanity_loss_modifier) * delta
 	else:
-		sanity += (DEFAULT_SANITY_GAIN + sanity_gain_modifier) * delta
-		if sanity >= (DEFAULT_SANITY_CAP + sanity_cap_modifier):
-			sanity = DEFAULT_SANITY_CAP + sanity_cap_modifier
+		sanity_modifier = (DEFAULT_SANITY_GAIN + sanity_gain_modifier) * delta
+	sanity += sanity_modifier
+	if sanity <= 0:
+		#player has died
+		emit_signal("player_death")
+		die()
+	elif sanity > maxSanity:
+		sanity = maxSanity
+	else:
+		emit_signal("sanityChanged")
 	print(str("Player distance and sanity: (", distance_to_base, ", ", sanity, ")"))
-	
+
+func die() -> void:
+	print("Player is dead")
