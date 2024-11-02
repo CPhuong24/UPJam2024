@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca72u8yvsyvue"]
+
+[sub_resource type="GDScript" id="GDScript_fhl3u"]
+script/source = "extends Control
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+func _draw() -> void:
+	var viewpoint = get_viewport_rect()
+	draw_rect(Rect2(viewpoint.position.x - viewpoint.size.x / 2, viewpoint.position.y - viewpoint.size.y / 2, viewpoint.size.x, viewpoint.size.y), Color.BLACK)
+	draw_circle(Vector2(0, 0), 100,  Color(100, 0, 0, 0))
+"
+
+[node name="Darkness" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -32.0
+offset_top = -119.0
+offset_right = 8.0
+offset_bottom = -79.0
+script = SubResource("GDScript_fhl3u")
