@@ -31,6 +31,7 @@ var sanity_gain_modifier = 0 # modifiers which increase or decrease sanity gain 
 var sanity_cap_modifier = 0 # modifiers which increase or decrease maximum sanity
 var base_redius_modifier = 0 # modifiers which increase or decrease the base's radius
 var inventory_limit_modifier = 0 # modifiers which increase or decrease player's maximum inventory
+var base_enabled = true # whether the base has fuel to ward off the darkness or not
 
 @onready var base = get_parent().get_node('Base')
 
@@ -74,10 +75,10 @@ func _process(delta):
 	distance_to_base = base.global_position.distance_to(global_position)
 	maxSanity = DEFAULT_SANITY_CAP + sanity_cap_modifier
 	var sanity_modifier = 0
-	if distance_to_base > (DEFAULT_BASE_RADIUS + base_redius_modifier):
-		sanity_modifier = (DEFAULT_SANITY_LOSS + sanity_loss_modifier) * delta
-	else:
+	if distance_to_base < (DEFAULT_BASE_RADIUS + base_redius_modifier) and base_enabled:
 		sanity_modifier = (DEFAULT_SANITY_GAIN + sanity_gain_modifier) * delta
+	else:
+		sanity_modifier = (DEFAULT_SANITY_LOSS + sanity_loss_modifier) * delta
 	sanity += sanity_modifier
 	if sanity <= 0:
 		#player has died
