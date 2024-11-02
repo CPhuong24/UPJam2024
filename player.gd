@@ -90,7 +90,7 @@ func _process(delta):
 	
 	# Logging
 	if time_curr - time_last_logged > LOGGING_FREQ_MSEC:
-		print(str("Player: (distance_to_base: ", distance_to_base, ", sanity:", sanity, ")"))
+		print(str("Player: (distance_to_base: ", distance_to_base, ", sanity: ", sanity, ")"))
 		time_last_logged = time_curr
 
 func die() -> void:
