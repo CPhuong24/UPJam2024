@@ -1,10 +1,10 @@
 extends TextureProgressBar
 
-@export var player: Player
+@onready var player = get_parent().get_parent().get_node('Player')
 
 func _ready() -> void:
 	player.sanityChanged.connect(update)
 	update()
 
 func update():
-	value = player.currentSanity * 100 / player.maxSanity
+	value = player.sanity * 100 / player.maxSanity
