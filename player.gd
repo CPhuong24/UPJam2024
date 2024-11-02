@@ -1,10 +1,20 @@
 extends CharacterBody2D
 
+class_name Player
+
+signal sanityChanged
+
 @export var speed = 400
 var resource_count = 0
 @export var inventory_limit = 5
 var on_resource = null
 var on_base = null
+@export var maxSanity = 100
+@onready var currentSanity: int = maxSanity
+
+func _ready():
+	remove_sanity(50)
+	add_sanity(25)
 
 func update_resources():
 	if resource_count < inventory_limit:
@@ -36,3 +46,21 @@ func _process(_delta):
 		update_resources()
 	if on_base != null and Input.is_action_just_pressed("interact"):
 		update_base()
+		
+func remove_sanity(amount: int) -> void:
+	currentSanity -= amount
+	sanityChanged.emit()
+	if currentSanity <= 0:
+		die()
+	else:
+		print("Sanity: ", currentSanity)
+
+func add_sanity(amount: int) -> void:
+	currentSanity += amount
+	sanityChanged.emit()
+	if currentSanity > maxSanity:
+		currentSanity = maxSanity
+	print("Sanity: ", currentSanity)
+
+func die() -> void:
+	print("Player is dead")
