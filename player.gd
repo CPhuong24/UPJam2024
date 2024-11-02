@@ -15,7 +15,10 @@ const LOGGING_FREQ_MSEC = 1000 # Period in milliseconds between logging outputs
 
 @export var inventory_limit = DEFAULT_INVENTORY_LIMIT
 @export var speed = 400
+@onready var character: AnimatedSprite2D = $AnimatedSprite2D
 
+
+var isRight = true
 var time_curr = 0
 var time_last_logged = 0
 
@@ -61,8 +64,30 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta):
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_direction * speed
-
 	move_and_slide()
+		# Handle horizontal movement and animations
+	if Input.is_action_pressed("move_right"):
+		character.play("move_right")
+		isRight = true
+	elif Input.is_action_pressed("move_left"):
+		character.play("move_left")
+		isRight = false
+	elif Input.is_action_just_released("move_right"):
+		character.play("stand_right")
+	elif Input.is_action_just_released("move_left"):
+		character.play("stand_left")
+
+	# Handle vertical movement and animations
+	elif Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
+		if isRight:
+			character.play("move_right")
+		else:
+			character.play("move_left")
+	elif Input.is_action_just_released("move_up") or Input.is_action_just_released("move_down"):
+		if isRight:
+			character.play("stand_right")
+		else:
+			character.play("stand_left")
 
 func _process(delta):
 	time_curr = Time.get_ticks_msec()
@@ -98,3 +123,7 @@ func _process(delta):
 
 func die() -> void:
 	print("Player is dead")
+	if isRight == true:
+		character.play("dead_right")
+	else:
+		character.play("dead_left")

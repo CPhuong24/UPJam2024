@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bmeq2t03daa0l" path="res://Tilemap_Flat.png" id="1_gqa5w"]
 [ext_resource type="PackedScene" uid="uid://d2yb8dg345l18" path="res://player.tscn" id="4_7hmd0"]
 [ext_resource type="PackedScene" uid="uid://cupwiadsvt60a" path="res://hud.tscn" id="5_ii0p0"]
-[ext_resource type="PackedScene" path="res://resource.tscn" id="6_06ksj"]
-[ext_resource type="PackedScene" path="res://base.tscn" id="7_117oc"]
+[ext_resource type="PackedScene" uid="uid://dwltit8ivhofr" path="res://resource.tscn" id="6_06ksj"]
+[ext_resource type="PackedScene" uid="uid://nd5gsw8ahina" path="res://base.tscn" id="7_117oc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wnbye"]
 resource_name = "terrain"
