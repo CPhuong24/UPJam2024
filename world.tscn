@@ -549,6 +549,10 @@ script = ExtResource("1_7mdlq")
 
 [node name="HUD" parent="." instance=ExtResource("5_ii0p0")]
 
+[node name="VBoxContainer" parent="HUD" index="5"]
+offset_left = -950.17
+offset_right = -543.17
+
 [node name="DeathScreen" parent="." instance=ExtResource("2_0kjjx")]
 
 [node name="GroundLayer" type="TileMapLayer" parent="."]
