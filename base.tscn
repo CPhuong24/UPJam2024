@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://nd5gsw8ahina"]
+[gd_scene load_steps=9 format=3 uid="uid://nd5gsw8ahina"]
 
 [ext_resource type="Script" path="res://base.gd" id="1_f355r"]
 [ext_resource type="Texture2D" uid="uid://bkpsamke8e1y7" path="res://House_Red.png" id="2_22fde"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://rg16im737d84" path="res://limbo_font__by_alex484000-d5dthys.ttf" id="3_p6q5f"]
 [ext_resource type="Texture2D" uid="uid://ck8j78rrviaho" path="res://healthbarUnder.png" id="5_uk6x5"]
 [ext_resource type="Texture2D" uid="uid://dmmhc1ecnfod8" path="res://healthbarProgress.png" id="6_haxxy"]
+[ext_resource type="Texture2D" uid="uid://bsy840sllx27b" path="res://Art Assests/light.tres" id="7_6d40q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avru2"]
 size = Vector2(128, 192)
@@ -63,6 +64,9 @@ stretch_margin_right = 4
 stretch_margin_bottom = 4
 texture_under = ExtResource("5_uk6x5")
 texture_progress = ExtResource("6_haxxy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("7_6d40q")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
