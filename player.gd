@@ -43,6 +43,7 @@ var base_enabled = true # whether the base has fuel to ward off the darkness or 
 @onready var base = get_parent().get_node('Base')
 @onready var shop = get_parent().get_node('Shop')
 @onready var light = $PointLight2D
+@onready var world = get_parent()
 
 func update_resources():
 	if resource_count < inventory_limit:
@@ -143,3 +144,5 @@ func die() -> void:
 		character.play("dead_right")
 	else:
 		character.play("dead_left")
+	get_parent()	.get_node("HUD").hide
+	world.get_node("DeathScreen").pause()
