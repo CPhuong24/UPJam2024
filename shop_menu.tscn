@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqpgdwtspewm8"]
+[gd_scene load_steps=3 format=3 uid="uid://cq5ppdfigdpif"]
 
 [ext_resource type="Script" path="res://shop_ui.gd" id="2_2hkpk"]
-[ext_resource type="PackedScene" uid="uid://d1mbjy1gbp4r8" path="res://shop_item.tscn" id="3_oiqkc"]
+[ext_resource type="PackedScene" uid="uid://djhjq3hcrbv7g" path="res://shop_item.tscn" id="3_oiqkc"]
 
 [node name="ShopMenu" type="CanvasLayer"]
 process_mode = 3

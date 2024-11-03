@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://world.gd" id="1_7mdlq"]
 [ext_resource type="Texture2D" uid="uid://ch2odkwcufvh0" path="res://Art Assests/Land Tileset.png" id="1_xepfa"]
-[ext_resource type="PackedScene" uid="uid://kj8cfdluj1ws" path="res://death_screen.tscn" id="2_0kjjx"]
+[ext_resource type="PackedScene" path="res://death_screen.tscn" id="2_0kjjx"]
 [ext_resource type="PackedScene" uid="uid://d2yb8dg345l18" path="res://player.tscn" id="4_7hmd0"]
 [ext_resource type="PackedScene" uid="uid://cupwiadsvt60a" path="res://hud.tscn" id="5_ii0p0"]
-[ext_resource type="PackedScene" uid="uid://dqbi5e052spf3" path="res://shop.tscn" id="5_s1hjy"]
+[ext_resource type="PackedScene" path="res://shop.tscn" id="5_s1hjy"]
 [ext_resource type="PackedScene" uid="uid://nd5gsw8ahina" path="res://base.tscn" id="7_117oc"]
 [ext_resource type="Texture2D" uid="uid://cxptknh4qqk6y" path="res://sun_fragments/sun_fragment_1.png" id="8_jx5r3"]
 [ext_resource type="Texture2D" uid="uid://drgnm1fohxnmh" path="res://sun_fragments/sun_fragment_2.png" id="9_deooc"]

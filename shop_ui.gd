@@ -24,7 +24,7 @@ func open_shop():
 	get_tree().paused = true
 	exit_button.pressed.connect(close_shop)
 	for item in items.get_children():
-		item.item_icon.pressed.connect(confirm_item_purchase.bind(item))
+		item.button.pressed.connect(confirm_item_purchase.bind(item))
 
 func confirm_item_purchase(item):
 	item_pending = item
