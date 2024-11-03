@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=4 uid="uid://bwvplt60j4m74"]
+[gd_scene load_steps=19 format=4 uid="uid://bwvplt60j4m74"]
 
 [ext_resource type="Texture2D" uid="uid://bmeq2t03daa0l" path="res://Tilemap_Flat.png" id="1_gqa5w"]
 [ext_resource type="Texture2D" uid="uid://ch2odkwcufvh0" path="res://Art Assests/Land Tileset.png" id="1_xepfa"]
+[ext_resource type="PackedScene" uid="uid://kj8cfdluj1ws" path="res://death_screen.tscn" id="2_0kjjx"]
 [ext_resource type="Script" path="res://resource_layer.gd" id="2_5b423"]
 [ext_resource type="PackedScene" uid="uid://d2yb8dg345l18" path="res://player.tscn" id="4_7hmd0"]
 [ext_resource type="PackedScene" uid="uid://cupwiadsvt60a" path="res://hud.tscn" id="5_ii0p0"]
-[ext_resource type="PackedScene" uid="uid://dwltit8ivhofr" path="res://resource.tscn" id="6_06ksj"]
+[ext_resource type="PackedScene" path="res://resource.tscn" id="6_06ksj"]
 [ext_resource type="PackedScene" uid="uid://nd5gsw8ahina" path="res://base.tscn" id="7_117oc"]
 [ext_resource type="Texture2D" uid="uid://cxptknh4qqk6y" path="res://sun_fragments/sun_fragment_1.png" id="8_jx5r3"]
 [ext_resource type="Texture2D" uid="uid://drgnm1fohxnmh" path="res://sun_fragments/sun_fragment_2.png" id="9_deooc"]
@@ -605,6 +606,8 @@ sources/0 = SubResource("TileSetAtlasSource_wnbye")
 [node name="World" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource("5_ii0p0")]
+
+[node name="DeathScreen" parent="." instance=ExtResource("2_0kjjx")]
 
 [node name="GroundLayer" type="TileMapLayer" parent="."]
 scale = Vector2(4, 4)

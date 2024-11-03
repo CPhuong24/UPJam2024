@@ -1,21 +1,28 @@
-extends ColorRect
+extends CanvasLayer
 
-@onready var animator: AnimationPlayer = $AnimationPlayer
-@onready var play_button: Button = find_child("ResumeButton")
+#@onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var play_button: Button = find_child("RestartButton")
 @onready var quit_button: Button = find_child("QuitButton")
 @onready var main_menu_button: Button = find_child("MainMenuButton")
 
+func _ready() -> void:
+	hide()
+
 func unpause():
-	animator.play("Unpause")
 	
-	get_tree().paused = false
+	print("resume")
+	#get_tree().paused = false
+
 	play_button.pressed.disconnect(unpause)
 	main_menu_button.pressed.disconnect(mainm)
 	quit_button.pressed.disconnect(get_tree().quit)
 	
+	get_tree().change_scene_to_file("res://world.tscn")
+	
 func pause():
-	animator.play("Pause")	
-	get_tree().paused = true
+
+	show()
+	#get_tree().paused = true
 	print("setting")
 	play_button.pressed.connect(unpause)
 	main_menu_button.pressed.connect(mainm)
@@ -23,11 +30,12 @@ func pause():
 	print("finished")
 	
 func mainm():
-	animator.play("Unpause")
-	get_tree().paused = false
+
+	#get_tree().paused = false
 	play_button.pressed.disconnect(unpause)
 	main_menu_button.pressed.disconnect(mainm)
 	quit_button.pressed.disconnect(get_tree().quit)
-	
+	print("main")
+
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 	

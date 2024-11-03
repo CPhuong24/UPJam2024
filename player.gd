@@ -38,6 +38,7 @@ var inventory_limit_modifier = 0 # modifiers which increase or decrease player's
 var base_enabled = true # whether the base has fuel to ward off the darkness or not
 
 @onready var base = get_parent().get_node('Base')
+@onready var world = get_parent()
 
 func update_resources():
 	if resource_count < inventory_limit:
@@ -131,3 +132,5 @@ func die() -> void:
 		character.play("dead_right")
 	else:
 		character.play("dead_left")
+	get_parent()	.get_node("HUD").hide
+	world.get_node("DeathScreen").pause()
