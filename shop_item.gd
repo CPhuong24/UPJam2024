@@ -14,8 +14,5 @@ var bought = false
 func _ready() -> void:
 	name_label.text = item_name
 	description_label.text = description
-	item_icon.texture = ImageTexture.create_from_image(Image.load_from_file(str("res://Art Assets/", item_name, ".png"))) # Expect item icon to be placed under Art Assets as a png with the same name as the item name.
+	item_icon.texture_normal = load(str("res://Art Assests/", item_name, ".png")) # Expect item icon to be placed under Art Assets as a png with the same name as the item name.
 	price_label.text = str(price)
-	
-func buy_item():
-	bought = true

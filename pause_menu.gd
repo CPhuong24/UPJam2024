@@ -14,7 +14,7 @@ func unpause():
 	quit_button.pressed.disconnect(get_tree().quit)
 	
 func pause():
-	animator.play("Pause")	
+	animator.play("Pause")
 	get_tree().paused = true
 	play_button.pressed.connect(unpause)
 	main_menu_button.pressed.connect(mainm)
