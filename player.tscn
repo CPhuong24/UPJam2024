@@ -1,14 +1,14 @@
 [gd_scene load_steps=25 format=3 uid="uid://d2yb8dg345l18"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_nifug"]
-[ext_resource type="PackedScene" uid="uid://dh7v2ketmcn6m" path="res://pause_menu.tscn" id="3_bilw1"]
+[ext_resource type="PackedScene" uid="uid://dm0aloqbelqr6" path="res://pause_menu.tscn" id="3_bilw1"]
 [ext_resource type="Texture2D" uid="uid://2gdusjhvq7vk" path="res://player_sprites/dead_left.png" id="3_h7wuq"]
 [ext_resource type="Texture2D" uid="uid://02xhhf1bdxkw" path="res://player_sprites/dead_right.png" id="4_gwyx4"]
 [ext_resource type="Texture2D" uid="uid://cfaogb4isrlbe" path="res://player_sprites/move_left.png" id="5_ht3il"]
 [ext_resource type="Texture2D" uid="uid://cbpmvld27g0fc" path="res://player_sprites/move_right.png" id="6_7xbyn"]
 [ext_resource type="Texture2D" uid="uid://c5iq3qpl05brt" path="res://player_sprites/stand_left.png" id="7_b2q7o"]
 [ext_resource type="Texture2D" uid="uid://chaabe88nx1uw" path="res://player_sprites/stand_right.png" id="8_aif8r"]
-[ext_resource type="PackedScene" uid="uid://dqpgdwtspewm8" path="res://shop_menu.tscn" id="10_fhygy"]
+[ext_resource type="PackedScene" path="res://shop_menu.tscn" id="10_fhygy"]
 [ext_resource type="AudioStream" uid="uid://bcl525si46o84" path="res://Audio Assets/Breathing and Heartbeat.wav" id="10_mihhx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tb8mv"]
