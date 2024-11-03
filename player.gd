@@ -13,6 +13,7 @@ const DEFAULT_SANITY_LOSS = -2 # rate of sanity loss when away from base in sani
 const DEFAULT_SANITY_GAIN = 5 # rate of sanity gain when new base in sanity per second
 const DEFAULT_LIGHT_RADIUS = 500 # width and height of the player's light source
 const LOGGING_FREQ_MSEC = 1000 # Period in milliseconds between logging outputs
+const DEFAULT_BREATHING_DB = -20 # starting value of SFXBreathing node
 
 @export var inventory_limit = DEFAULT_INVENTORY_LIMIT
 @export var speed = 400
@@ -39,11 +40,14 @@ var base_radius_modifier = 1 # modifiers which increase or decrease the base's r
 var inventory_limit_modifier = 0 # modifiers which increase or decrease player's maximum inventory
 var light_radius_modifier = 1 # modifiers which increase or decrease player's light source size
 var base_enabled = true # whether the base has fuel to ward off the darkness or not
+var light_modifier = 0.01 # modifiers which increase or decrease the texture scale of the light around the player
+var db_modifier = 0.25 # modifier which increases or decreases the breathing sound
 
 @onready var base = get_parent().get_node('Base')
 @onready var shop = get_parent().get_node('Shop')
 @onready var light = $PointLight2D
 @onready var world = get_parent()
+@onready var breathing = $SFXBreathing
 
 func update_resources():
 	if resource_count < inventory_limit:
@@ -123,6 +127,7 @@ func _process(delta):
 	else:
 		sanity_modifier = (DEFAULT_SANITY_LOSS * sanity_loss_modifier) * delta
 	sanity += sanity_modifier
+	
 	if sanity <= 0:
 		#player has died
 		emit_signal("player_death")
@@ -136,10 +141,17 @@ func _process(delta):
 	if time_curr - time_last_logged > LOGGING_FREQ_MSEC:
 		print(str("Player: (distance_to_base: ", distance_to_base, ", sanity: ", sanity, ")"))
 		time_last_logged = time_curr
+	
+	# make breathing louder as sanity goes down
+	breathing.volume_db = db_modifier * (100 - sanity) + DEFAULT_BREATHING_DB
+	
+	# Dynamically change light scale based on sanity
+	light.texture_scale = sanity * light_modifier
 
 func die() -> void:
 	is_dead = true
 	print("Player is dead")
+	breathing.stop()
 	if isRight == true:
 		character.play("dead_right")
 	else:

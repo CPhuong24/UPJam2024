@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2yb8dg345l18"]
+[gd_scene load_steps=25 format=3 uid="uid://d2yb8dg345l18"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_nifug"]
 [ext_resource type="PackedScene" uid="uid://dh7v2ketmcn6m" path="res://pause_menu.tscn" id="3_bilw1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c5iq3qpl05brt" path="res://player_sprites/stand_left.png" id="7_b2q7o"]
 [ext_resource type="Texture2D" uid="uid://chaabe88nx1uw" path="res://player_sprites/stand_right.png" id="8_aif8r"]
 [ext_resource type="PackedScene" uid="uid://dqpgdwtspewm8" path="res://shop_menu.tscn" id="10_fhygy"]
+[ext_resource type="AudioStream" uid="uid://bcl525si46o84" path="res://Audio Assets/Breathing and Heartbeat.wav" id="10_mihhx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tb8mv"]
 atlas = ExtResource("3_h7wuq")
@@ -147,3 +148,8 @@ texture = SubResource("GradientTexture2D_nkbsc")
 [node name="ShopMenu" parent="." instance=ExtResource("10_fhygy")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_bilw1")]
+
+[node name="SFXBreathing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_mihhx")
+volume_db = -20.0
+autoplay = true

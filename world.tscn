@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bmeq2t03daa0l" path="res://Tilemap_Flat.png" id="1_gqa5w"]
 [ext_resource type="Texture2D" uid="uid://ch2odkwcufvh0" path="res://Art Assests/Land Tileset.png" id="1_xepfa"]
-[ext_resource type="PackedScene" path="res://death_screen.tscn" id="2_0kjjx"]
+[ext_resource type="PackedScene" uid="uid://kj8cfdluj1ws" path="res://death_screen.tscn" id="2_0kjjx"]
 [ext_resource type="Script" path="res://resource_layer.gd" id="2_5b423"]
 [ext_resource type="PackedScene" uid="uid://d2yb8dg345l18" path="res://player.tscn" id="4_7hmd0"]
 [ext_resource type="PackedScene" uid="uid://cupwiadsvt60a" path="res://hud.tscn" id="5_ii0p0"]
