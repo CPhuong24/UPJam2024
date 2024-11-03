@@ -11,8 +11,8 @@ signal player_win
 const DEFAULT_BASE_RADIUS = 400 # distance where player is considered near/far base
 const DEFAULT_INVENTORY_LIMIT = 5 # cap for player resource count
 const DEFAULT_SANITY_CAP = 100 # cap at which sanity can no longer be increased
-const DEFAULT_SANITY_LOSS = -2 # rate of sanity loss when away from base in sanity per second
-const DEFAULT_SANITY_GAIN = 5 # rate of sanity gain when new base in sanity per second
+const DEFAULT_SANITY_LOSS = -10 # rate of sanity loss when away from base in sanity per second
+const DEFAULT_SANITY_GAIN = 20 # rate of sanity gain when new base in sanity per second
 const DEFAULT_LIGHT_RADIUS = 500 # width and height of the player's light source
 const LOGGING_FREQ_MSEC = 1000 # Period in milliseconds between logging outputs
 const DEFAULT_BREATHING_DB = -20 # starting value of SFXBreathing node
