@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://nd5gsw8ahina"]
+[gd_scene load_steps=16 format=3 uid="uid://nd5gsw8ahina"]
 
 [ext_resource type="Script" path="res://base.gd" id="1_f355r"]
 [ext_resource type="Texture2D" uid="uid://bkpsamke8e1y7" path="res://House_Red.png" id="2_22fde"]
@@ -6,9 +6,68 @@
 [ext_resource type="FontFile" uid="uid://rg16im737d84" path="res://limbo_font__by_alex484000-d5dthys.ttf" id="3_p6q5f"]
 [ext_resource type="Texture2D" uid="uid://ck8j78rrviaho" path="res://healthbarUnder.png" id="5_uk6x5"]
 [ext_resource type="Texture2D" uid="uid://dmmhc1ecnfod8" path="res://healthbarProgress.png" id="6_haxxy"]
+[ext_resource type="Texture2D" uid="uid://dfijklrcqmhna" path="res://fire.png" id="7_8818l"]
+[ext_resource type="Texture2D" uid="uid://fng6avjvhhdl" path="res://fire4.png" id="8_rfc7y"]
+[ext_resource type="Texture2D" uid="uid://d0uhf7180fpt6" path="res://fire3.png" id="9_gb6j2"]
+[ext_resource type="Texture2D" uid="uid://b4pxtp2de6jpn" path="res://nofire.png" id="10_1bn55"]
+[ext_resource type="Texture2D" uid="uid://b4jduo0e7vql" path="res://fire2.png" id="10_gdp54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avru2"]
 size = Vector2(128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_duiax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_gdp54")
+}],
+"loop": true,
+"name": &"burning_out",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8818l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_rfc7y")
+}],
+"loop": true,
+"name": &"medium",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_1bn55")
+}],
+"loop": true,
+"name": &"nofire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gb6j2")
+}],
+"loop": true,
+"name": &"small",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_b15bv"]
+offsets = PackedFloat32Array(0.272727, 0.668831)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8bpj"]
+gradient = SubResource("Gradient_b15bv")
+width = 2000
+height = 2000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Base" type="Area2D"]
 script = ExtResource("1_f355r")
@@ -63,6 +122,16 @@ stretch_margin_right = 4
 stretch_margin_bottom = 4
 texture_under = ExtResource("5_uk6x5")
 texture_progress = ExtResource("6_haxxy")
+
+[node name="Fire" type="AnimatedSprite2D" parent="."]
+position = Vector2(-184, 153)
+sprite_frames = SubResource("SpriteFrames_duiax")
+animation = &"nofire"
+
+[node name="PointLight2D" type="PointLight2D" parent="Fire"]
+position = Vector2(4, 15)
+energy = 0.5
+texture = SubResource("GradientTexture2D_a8bpj")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

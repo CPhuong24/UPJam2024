@@ -5,7 +5,7 @@ const DEFAULT_LIGHT_ENERGY = 0.5
 const LIGHT_ENERGY_CHANGE_RATE = 0.1
 @export var light_energy = 0.5
 @onready var player = get_parent().get_node('Player')
-@onready var light = get_node('PointLight2D')
+@onready var light = $Fire/PointLight2D
 @onready var label = $Label
 @onready var progress_bar = $TextureProgressBar
 const BASE_RESOURCE_CONSUMPTION = 2 # how quickly in durability/sec the base consumes resources
@@ -45,3 +45,13 @@ func _process(delta: float) -> void:
 			light_energy -= LIGHT_ENERGY_CHANGE_RATE * delta
 	light.energy = min(max(light_energy, 0), DEFAULT_LIGHT_ENERGY)
 	progress_bar.value = current_durability
+	
+	# Set fire strength/animation.
+	if light_energy > DEFAULT_LIGHT_ENERGY * 0.75:
+		$Fire.play("default")
+	elif light_energy > DEFAULT_LIGHT_ENERGY * 0.5:
+		$Fire.play("medium")
+	elif light_energy > DEFAULT_LIGHT_ENERGY * 0.25:
+		$Fire.play("small")
+	else:
+		$Fire.play("nofire")

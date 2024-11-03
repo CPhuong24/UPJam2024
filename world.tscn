@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://bwvplt60j4m74"]
+[gd_scene load_steps=8 format=4 uid="uid://bwvplt60j4m74"]
 
 [ext_resource type="Texture2D" uid="uid://bmeq2t03daa0l" path="res://Tilemap_Flat.png" id="1_gqa5w"]
 [ext_resource type="PackedScene" uid="uid://d2yb8dg345l18" path="res://player.tscn" id="4_7hmd0"]
 [ext_resource type="PackedScene" uid="uid://cupwiadsvt60a" path="res://hud.tscn" id="5_ii0p0"]
-[ext_resource type="PackedScene" path="res://resource.tscn" id="6_06ksj"]
-[ext_resource type="PackedScene" path="res://base.tscn" id="7_117oc"]
+[ext_resource type="PackedScene" uid="uid://dwltit8ivhofr" path="res://resource.tscn" id="6_06ksj"]
+[ext_resource type="PackedScene" uid="uid://nd5gsw8ahina" path="res://base.tscn" id="7_117oc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wnbye"]
 resource_name = "terrain"
@@ -50,17 +50,6 @@ tile_size = Vector2i(64, 64)
 uv_clipping = true
 sources/0 = SubResource("TileSetAtlasSource_wnbye")
 
-[sub_resource type="Gradient" id="Gradient_fi67j"]
-offsets = PackedFloat32Array(0.136364, 0.623377)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1lbyi"]
-gradient = SubResource("Gradient_fi67j")
-width = 2000
-height = 2000
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [node name="World" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource("5_ii0p0")]
@@ -84,10 +73,6 @@ tile_map_data = PackedByteArray("AACl/l//AAADAAMAAACl/mD/AAADAAMAAACl/mH/AAADAAM
 tile_set = SubResource("TileSet_ufj86")
 
 [node name="Base" parent="." instance=ExtResource("7_117oc")]
-
-[node name="PointLight2D" type="PointLight2D" parent="Base"]
-energy = 0.5
-texture = SubResource("GradientTexture2D_1lbyi")
 
 [node name="resource" parent="." instance=ExtResource("6_06ksj")]
 position = Vector2(672, 858)
