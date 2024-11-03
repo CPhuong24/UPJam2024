@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dh7v2ketmcn6m"]
 
-[ext_resource type="Material" uid="uid://jkl7h736ssva" path="res://pause_menu.tres" id="1_5y178"]
+[ext_resource type="Material" uid="uid://cadlvugoaa2o5" path="res://pause_menu.tres" id="1_5y178"]
 [ext_resource type="Script" path="res://pause_menu.gd" id="2_n505i"]
 [ext_resource type="FontFile" uid="uid://rg16im737d84" path="res://limbo_font__by_alex484000-d5dthys.ttf" id="3_1yufk"]
 

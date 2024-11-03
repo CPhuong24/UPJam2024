@@ -70,3 +70,19 @@ theme_override_font_sizes/font_size = 60
 text = "
 A boy awakens in total darkness, memories lost and senses sharp. The world around him is silent, shadows stretching endlessly. His only guide is a faint, flickering light in the distance, whispering of forgotten secrets and hidden dangers. With each step, fragments of his past flash before him—faces, places, and a name he can’t recall. Driven by curiosity and fear, he ventures forward, hoping to uncover who he is and why the world has become so dark."
 autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -289.0
+offset_top = -79.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_a8475")
+theme_override_font_sizes/font_size = 60
+text = "Continue →"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

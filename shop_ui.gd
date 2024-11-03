@@ -1,6 +1,5 @@
-extends ColorRect
+extends CanvasLayer
 
-@onready var animator: AnimationPlayer = $AnimationPlayer
 @onready var items: VBoxContainer = find_child("ItemList")
 @onready var exit_button: Button = find_child("ExitButton")
 @onready var confirm: ConfirmationDialog = find_child("ConfirmationDialog")
@@ -11,13 +10,13 @@ extends ColorRect
 var item_pending = null	
 
 func close_shop():
-	animator.play("Unpause")
+	hide()
 	get_tree().paused = false
 	player.set_player_light(player.DEFAULT_LIGHT_RADIUS * player.light_radius_modifier)
 	exit_button.pressed.disconnect(close_shop)
 	
 func open_shop():
-	animator.play("Pause")
+	show()
 	player.set_player_light(1920)
 	player.on_base = base
 	player.update_base()
@@ -46,6 +45,8 @@ func apply_item_effect():
 			base.resource_consumption_modifier *= 0.5
 		"Dowsing Rod":
 			get_parent().get_parent().get_node("HUD").get_node("Dowsing Rod").visible = true
+		"Compass":
+			get_parent().get_parent().get_node("HUD").get_node("Compass").visible = true
 	item_pending.queue_free()
 
 func _on_purchase_dialog_confirmed() -> void:

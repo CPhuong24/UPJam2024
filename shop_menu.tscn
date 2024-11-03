@@ -1,149 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqpgdwtspewm8"]
+[gd_scene load_steps=3 format=3 uid="uid://dqpgdwtspewm8"]
 
-[ext_resource type="Material" uid="uid://jkl7h736ssva" path="res://pause_menu.tres" id="1_xa1j1"]
 [ext_resource type="Script" path="res://shop_ui.gd" id="2_2hkpk"]
 [ext_resource type="PackedScene" uid="uid://d1mbjy1gbp4r8" path="res://shop_item.tscn" id="3_oiqkc"]
 
-[sub_resource type="Animation" id="Animation_2txt2"]
-resource_name = "Pause"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/blur")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [0.0, 2.5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/brightness")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [1.0, 0.9]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_xa6tq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/blur")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/brightness")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ng1w4"]
-resource_name = "Unpause"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/blur")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/brightness")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6k71"]
-_data = {
-"Pause": SubResource("Animation_2txt2"),
-"RESET": SubResource("Animation_xa6tq"),
-"Unpause": SubResource("Animation_ng1w4")
-}
-
-[node name="ShopMenu" type="ColorRect"]
+[node name="ShopMenu" type="CanvasLayer"]
 process_mode = 3
-material = ExtResource("1_xa1j1")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+visible = false
 script = ExtResource("2_2hkpk")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -186,6 +51,13 @@ item_name = "Carved Animal"
 description = "Reduce rate of sanity loss when away from home."
 price = "10"
 
+[node name="Compass" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ItemList" instance=ExtResource("3_oiqkc")]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+item_name = "Compass"
+description = "A compass to guide you home."
+price = "10"
+
 [node name="Bonfire" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ItemList" instance=ExtResource("3_oiqkc")]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
@@ -219,10 +91,5 @@ initial_position = 2
 [node name="AcceptDialog" type="AcceptDialog" parent="CenterContainer/PanelContainer/MarginContainer"]
 auto_translate_mode = 1
 initial_position = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_i6k71")
-}
 
 [connection signal="confirmed" from="CenterContainer/PanelContainer/MarginContainer/ConfirmationDialog" to="." method="_on_purchase_dialog_confirmed"]

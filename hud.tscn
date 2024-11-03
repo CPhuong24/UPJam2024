@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cupwiadsvt60a"]
+[gd_scene load_steps=14 format=3 uid="uid://cupwiadsvt60a"]
 
 [ext_resource type="Script" path="res://sanity.gd" id="1_htj3k"]
 [ext_resource type="Texture2D" uid="uid://ck8j78rrviaho" path="res://healthbarUnder.png" id="1_mbdat"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://doa3x015iejj1" path="res://Art Assests/resource.png" id="6_ysvp4"]
 [ext_resource type="Script" path="res://compass.gd" id="7_prgjv"]
 [ext_resource type="Script" path="res://dowsing_rod.gd" id="9_viw56"]
+[ext_resource type="Script" path="res://fragment_container.gd" id="10_anpct"]
+[ext_resource type="Texture2D" uid="uid://catbtgyxsaq2i" path="res://sun_fragments/sun_fragment_1_greyscale.png" id="10_d0pit"]
+[ext_resource type="Texture2D" uid="uid://cp5p64kfgl7no" path="res://sun_fragments/sun_fragment_2_greyscale.png" id="11_16c5p"]
+[ext_resource type="Texture2D" uid="uid://cjkcuuswpeiu6" path="res://sun_fragments/sun_fragment_3_greyscale.png" id="12_iiwuy"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -100,6 +104,7 @@ horizontal_alignment = 1
 vertical_alignment = 3
 
 [node name="Compass" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -144,3 +149,32 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_vw54w")
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 9.83
+offset_top = -77.71
+offset_right = 416.83
+offset_bottom = 1493.29
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+script = ExtResource("10_anpct")
+
+[node name="Fragment1" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 521)
+layout_mode = 2
+texture = ExtResource("10_d0pit")
+stretch_mode = 5
+
+[node name="Fragment2" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 521)
+layout_mode = 2
+texture = ExtResource("11_16c5p")
+stretch_mode = 5
+
+[node name="Fragment3" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_iiwuy")
+stretch_mode = 3

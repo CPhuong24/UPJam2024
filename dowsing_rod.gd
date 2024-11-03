@@ -7,8 +7,8 @@ extends TextureRect
 
 @onready var frags_to_collect = [frag_1, frag_2, frag_3]
 
-func collected_frag() -> void:
-	frags_to_collect.erase(player.on_sun_frag)
+func collected_frag(frag) -> void:
+	frags_to_collect.erase(frag)
 
 func get_nearest_frag() -> Area2D:
 	if frags_to_collect.is_empty():
