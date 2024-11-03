@@ -7,6 +7,7 @@
 size = Vector2(128, 192)
 
 [node name="Shop" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_gkgnq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
