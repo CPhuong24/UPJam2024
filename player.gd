@@ -4,7 +4,9 @@ class_name Player
 
 signal sanityChanged
 signal resourceChanged
+signal sunFragChanged
 signal player_death
+signal player_win
 
 const DEFAULT_BASE_RADIUS = 400 # distance where player is considered near/far base
 const DEFAULT_INVENTORY_LIMIT = 5 # cap for player resource count
@@ -14,6 +16,7 @@ const DEFAULT_SANITY_GAIN = 5 # rate of sanity gain when new base in sanity per 
 const DEFAULT_LIGHT_RADIUS = 500 # width and height of the player's light source
 const LOGGING_FREQ_MSEC = 1000 # Period in milliseconds between logging outputs
 const DEFAULT_BREATHING_DB = -20 # starting value of SFXBreathing node
+const SUN_FRAG_MAX = 3 # Amount of sun fragments for the player to collect and win
 
 @export var inventory_limit = DEFAULT_INVENTORY_LIMIT
 @export var speed = 400
@@ -21,14 +24,16 @@ const DEFAULT_BREATHING_DB = -20 # starting value of SFXBreathing node
 
 
 var isRight = true
-var is_dead = false
+var is_game_done = false
 var time_curr = 0
 var time_last_logged = 0
 
 var resource_count = 0
+var sun_frag_count = 0
 var on_resource = null
 var on_base = null
 var on_shop = null
+var on_sun_frag = null
 var distance_to_base = 0
 
 var maxSanity = DEFAULT_SANITY_CAP
@@ -45,6 +50,7 @@ var db_modifier = 0.25 # modifier which increases or decreases the breathing sou
 
 @onready var base = get_parent().get_node('Base')
 @onready var shop = get_parent().get_node('Shop')
+@onready var hud = get_parent()	.get_node("HUD")
 @onready var light = $PointLight2D
 @onready var world = get_parent()
 @onready var breathing = $SFXBreathing
@@ -68,6 +74,14 @@ func update_base():
 	resource_count = 0
 	emit_signal("resourceChanged")
 
+func update_sun_frag() -> void:
+	sun_frag_count += 1
+	emit_signal("sunFragChanged")
+	on_sun_frag.queue_free()
+	print(str("Player now has ", sun_frag_count, " sun fragments."))
+	if sun_frag_count == SUN_FRAG_MAX:
+		win()
+
 func set_player_light(size: int) -> void:
 	light.texture.width = size
 	light.texture.height = size
@@ -77,7 +91,7 @@ func _input(event: InputEvent) -> void:
 		$PauseMenu.pause()
 
 func _physics_process(_delta):
-	if is_dead:
+	if is_game_done:
 		return
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_direction * speed
@@ -111,7 +125,9 @@ func _process(delta):
 	
 	# Resource Calculations
 	if Input.is_action_just_pressed("interact"):
-		if on_resource != null:
+		if on_sun_frag != null:
+			update_sun_frag()
+		elif on_resource != null:
 			update_resources()
 		elif on_shop != null:
 			$ShopMenu.open_shop()
@@ -147,14 +163,22 @@ func _process(delta):
 	
 	# Dynamically change light scale based on sanity
 	light.texture_scale = sanity * light_modifier
+	
+func cleanup() -> void:
+	is_game_done = true
+	breathing.stop()
+	hud.hide
 
 func die() -> void:
-	is_dead = true
+	cleanup()
 	print("Player is dead")
-	breathing.stop()
 	if isRight == true:
 		character.play("dead_right")
 	else:
 		character.play("dead_left")
-	get_parent()	.get_node("HUD").hide
 	world.get_node("DeathScreen").pause()
+
+func win() -> void:
+	cleanup()
+	emit_signal("player_win")
+	print("Player won")

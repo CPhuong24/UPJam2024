@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bwvplt60j4m74"]
+[gd_scene load_steps=21 format=4 uid="uid://bwvplt60j4m74"]
 
 [ext_resource type="Texture2D" uid="uid://bmeq2t03daa0l" path="res://Tilemap_Flat.png" id="1_gqa5w"]
 [ext_resource type="Texture2D" uid="uid://ch2odkwcufvh0" path="res://Art Assests/Land Tileset.png" id="1_xepfa"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://nd5gsw8ahina" path="res://base.tscn" id="7_117oc"]
 [ext_resource type="Texture2D" uid="uid://cxptknh4qqk6y" path="res://sun_fragments/sun_fragment_1.png" id="8_jx5r3"]
 [ext_resource type="Texture2D" uid="uid://drgnm1fohxnmh" path="res://sun_fragments/sun_fragment_2.png" id="9_deooc"]
+[ext_resource type="Script" path="res://sun_frag.gd" id="9_wfosc"]
 [ext_resource type="Texture2D" uid="uid://xd6a24jgl0ke" path="res://sun_fragments/sun_fragment_3.png" id="10_0dih5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2b4u"]
@@ -675,6 +676,7 @@ color = Color(0.144063, 0.144063, 0.144063, 1)
 
 [node name="sun_frag_1" type="Area2D" parent="."]
 position = Vector2(1500, -1200)
+script = ExtResource("9_wfosc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sun_frag_1"]
 shape = SubResource("CircleShape2D_75wlx")
@@ -685,6 +687,7 @@ texture = ExtResource("8_jx5r3")
 
 [node name="sun_frag_2" type="Area2D" parent="."]
 position = Vector2(-1500, -1400)
+script = ExtResource("9_wfosc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sun_frag_2"]
 shape = SubResource("CircleShape2D_75wlx")
@@ -695,6 +698,7 @@ texture = ExtResource("9_deooc")
 
 [node name="sun_frag_3" type="Area2D" parent="."]
 position = Vector2(-600, 1600)
+script = ExtResource("9_wfosc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sun_frag_3"]
 shape = SubResource("CircleShape2D_75wlx")
@@ -706,6 +710,13 @@ texture = ExtResource("10_0dih5")
 [node name="Player" parent="." instance=ExtResource("4_7hmd0")]
 z_index = 1
 position = Vector2(59, 119)
+
+[connection signal="body_shape_entered" from="sun_frag_1" to="sun_frag_1" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="sun_frag_1" to="sun_frag_1" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="sun_frag_2" to="sun_frag_2" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="sun_frag_2" to="sun_frag_2" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="sun_frag_3" to="sun_frag_3" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="sun_frag_3" to="sun_frag_3" method="_on_body_shape_exited"]
 
 [editable path="HUD"]
 [editable path="Player"]

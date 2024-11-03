@@ -5,15 +5,24 @@ extends TextureRect
 @onready var frag_2 = get_parent().get_parent().get_node('sun_frag_2')
 @onready var frag_3 = get_parent().get_parent().get_node('sun_frag_3')
 
-func get_nearest_frag():
-	var frag_1_dist = Vector2(player.position.x, player.position.y - (get_viewport().size.y / 2 - self.position.y)).distance_squared_to(frag_1.position)
-	var frag_2_dist = Vector2(player.position.x, player.position.y - (get_viewport().size.y / 2 - self.position.y)).distance_squared_to(frag_2.position)
-	var frag_3_dist = Vector2(player.position.x, player.position.y - (get_viewport().size.y / 2 - self.position.y)).distance_squared_to(frag_3.position)
-	if frag_1_dist < frag_2_dist and frag_1_dist < frag_3_dist:
-		return frag_1
-	elif frag_2_dist < frag_1_dist and frag_2_dist < frag_3_dist:
-		return frag_2
-	return frag_3
+@onready var frags_to_collect = [frag_1, frag_2, frag_3]
+
+func collected_frag() -> void:
+	frags_to_collect.erase(player.on_sun_frag)
+
+func get_nearest_frag() -> Area2D:
+	if frags_to_collect.is_empty():
+		return null
+	var distances = []
+	for frag in frags_to_collect:
+		var dist = Vector2(player.position.x, player.position.y - (get_viewport().size.y / 2 - self.position.y)).distance_squared_to(frag.position)
+		distances.append(dist)
+	
+	var collest_frag_idx = distances.find(distances.min())
+	return frags_to_collect[collest_frag_idx]
+
+func _ready() -> void:
+	player.sunFragChanged.connect(collected_frag)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,6 +30,7 @@ func _process(delta: float) -> void:
 	var nearest_frag = get_nearest_frag()
 	# Point the arrow towards the nearest fragment.
 	# Use the arrow as the reference point and not the players.
-	var arrow_vector = Vector2(player.position.x, player.position.y - (get_viewport().size.y / 2 - self.position.y))
-	var angle = arrow_vector.angle_to_point(nearest_frag.position)
-	self.rotation = angle + PI/2
+	if nearest_frag != null:
+		var arrow_vector = Vector2(player.position.x, player.position.y - (get_viewport().size.y / 2 - self.position.y))
+		var angle = arrow_vector.angle_to_point(nearest_frag.position)
+		self.rotation = angle + PI/2
