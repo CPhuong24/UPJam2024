@@ -45,6 +45,8 @@ func apply_item_effect():
 			base.resource_consumption_modifier *= 0.5
 		"Dowsing Rod":
 			get_parent().get_parent().get_node("HUD").get_node("Dowsing Rod").visible = true
+		"Compass":
+			get_parent().get_parent().get_node("HUD").get_node("Compass").visible = true
 	item_pending.queue_free()
 
 func _on_purchase_dialog_confirmed() -> void:

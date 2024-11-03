@@ -51,6 +51,13 @@ item_name = "Carved Animal"
 description = "Reduce rate of sanity loss when away from home."
 price = "10"
 
+[node name="Compass" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ItemList" instance=ExtResource("3_oiqkc")]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+item_name = "Compass"
+description = "A compass to guide you home."
+price = "10"
+
 [node name="Bonfire" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ItemList" instance=ExtResource("3_oiqkc")]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2

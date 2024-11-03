@@ -4,7 +4,7 @@ class_name Player
 
 signal sanityChanged
 signal resourceChanged
-signal sunFragChanged
+signal sunFragChanged(frag)
 signal player_death
 signal player_win
 
@@ -76,7 +76,7 @@ func update_base():
 
 func update_sun_frag() -> void:
 	sun_frag_count += 1
-	emit_signal("sunFragChanged")
+	emit_signal("sunFragChanged", on_sun_frag)
 	on_sun_frag.queue_free()
 	print(str("Player now has ", sun_frag_count, " sun fragments."))
 	if sun_frag_count == SUN_FRAG_MAX:
