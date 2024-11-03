@@ -117,12 +117,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltq0d"]
 size = Vector2(90, 114)
 
-[sub_resource type="Gradient" id="Gradient_apgd3"]
+[sub_resource type="Gradient" id="Gradient_oncw4"]
 offsets = PackedFloat32Array(0.136364, 0.623377)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nkbsc"]
-gradient = SubResource("Gradient_apgd3")
+gradient = SubResource("Gradient_oncw4")
 width = 500
 height = 500
 fill = 1

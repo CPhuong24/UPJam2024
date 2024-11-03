@@ -182,3 +182,4 @@ func win() -> void:
 	cleanup()
 	emit_signal("player_win")
 	print("Player won")
+	get_tree().change_scene_to_file("res://win_screen.tscn")
