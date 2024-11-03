@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://nd5gsw8ahina"]
+[gd_scene load_steps=15 format=3 uid="uid://nd5gsw8ahina"]
 
 [ext_resource type="Script" path="res://base.gd" id="1_f355r"]
-[ext_resource type="Texture2D" uid="uid://bkpsamke8e1y7" path="res://House_Red.png" id="2_22fde"]
 [ext_resource type="Texture2D" uid="uid://c58l16nph5g3o" path="res://sign.png" id="3_f1eac"]
 [ext_resource type="FontFile" uid="uid://rg16im737d84" path="res://limbo_font__by_alex484000-d5dthys.ttf" id="3_p6q5f"]
 [ext_resource type="Texture2D" uid="uid://ck8j78rrviaho" path="res://healthbarUnder.png" id="5_uk6x5"]
@@ -11,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://d0uhf7180fpt6" path="res://fire3.png" id="9_gb6j2"]
 [ext_resource type="Texture2D" uid="uid://b4pxtp2de6jpn" path="res://nofire.png" id="10_1bn55"]
 [ext_resource type="Texture2D" uid="uid://b4jduo0e7vql" path="res://fire2.png" id="10_gdp54"]
-[ext_resource type="Texture2D" uid="uid://bsy840sllx27b" path="res://Art Assests/light.tres" id="7_6d40q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avru2"]
 size = Vector2(128, 192)
@@ -76,13 +74,6 @@ script = ExtResource("1_f355r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_avru2")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -64.0
-offset_top = -96.0
-offset_right = 64.0
-offset_bottom = 96.0
-texture = ExtResource("2_22fde")
-
 [node name="TextureRect2" type="TextureRect" parent="."]
 offset_left = 58.5
 offset_top = -119.0
@@ -125,7 +116,6 @@ texture_under = ExtResource("5_uk6x5")
 texture_progress = ExtResource("6_haxxy")
 
 [node name="Fire" type="AnimatedSprite2D" parent="."]
-position = Vector2(-184, 153)
 sprite_frames = SubResource("SpriteFrames_duiax")
 animation = &"nofire"
 

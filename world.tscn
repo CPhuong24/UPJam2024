@@ -662,7 +662,6 @@ position = Vector2(12068, -1579)
 position = Vector2(59, 119)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.144063, 0.144063, 0.144063, 1)
 
 [editable path="HUD"]
