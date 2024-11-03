@@ -67,8 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_a8475")
 theme_override_font_sizes/font_size = 60
-text = "
-A boy awakens in total darkness, memories lost and senses sharp. The world around him is silent, shadows stretching endlessly. His only guide is a faint, flickering light in the distance, whispering of forgotten secrets and hidden dangers. With each step, fragments of his past flash before him—faces, places, and a name he can’t recall. Driven by curiosity and fear, he ventures forward, hoping to uncover who he is and why the world has become so dark."
+text = "A boy awakens in total darkness, memories lost and senses sharp. The world around him is silent, shadows stretching endlessly. His only guide is a faint, flickering light in the distance, whispering of forgotten secrets and hidden dangers. With each step, fragments of his past flash before him—faces, places, and a name he can’t recall. Driven by curiosity and fear, he ventures forward, hoping to uncover who he is and why the world has become so dark."
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="."]
