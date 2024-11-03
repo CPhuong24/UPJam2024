@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://bwvplt60j4m74"]
+[gd_scene load_steps=22 format=4 uid="uid://bwvplt60j4m74"]
 
+[ext_resource type="Script" path="res://world.gd" id="1_7mdlq"]
 [ext_resource type="Texture2D" uid="uid://bmeq2t03daa0l" path="res://Tilemap_Flat.png" id="1_gqa5w"]
 [ext_resource type="Texture2D" uid="uid://ch2odkwcufvh0" path="res://Art Assests/Land Tileset.png" id="1_xepfa"]
 [ext_resource type="PackedScene" uid="uid://kj8cfdluj1ws" path="res://death_screen.tscn" id="2_0kjjx"]
@@ -7,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d2yb8dg345l18" path="res://player.tscn" id="4_7hmd0"]
 [ext_resource type="PackedScene" uid="uid://cupwiadsvt60a" path="res://hud.tscn" id="5_ii0p0"]
 [ext_resource type="PackedScene" uid="uid://dqbi5e052spf3" path="res://shop.tscn" id="5_s1hjy"]
-[ext_resource type="PackedScene" uid="uid://dwltit8ivhofr" path="res://resource.tscn" id="6_06ksj"]
+[ext_resource type="PackedScene" path="res://resource.tscn" id="6_06ksj"]
 [ext_resource type="PackedScene" uid="uid://nd5gsw8ahina" path="res://base.tscn" id="7_117oc"]
 [ext_resource type="Texture2D" uid="uid://cxptknh4qqk6y" path="res://sun_fragments/sun_fragment_1.png" id="8_jx5r3"]
 [ext_resource type="Texture2D" uid="uid://drgnm1fohxnmh" path="res://sun_fragments/sun_fragment_2.png" id="9_deooc"]
@@ -606,6 +607,7 @@ sources/0 = SubResource("TileSetAtlasSource_wnbye")
 [sub_resource type="CircleShape2D" id="CircleShape2D_75wlx"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_7mdlq")
 
 [node name="HUD" parent="." instance=ExtResource("5_ii0p0")]
 
@@ -617,6 +619,7 @@ tile_map_data = PackedByteArray("AAAxAB0AAQACAAoAAAAxABwAAQAHAAUAAAAxABsAAQAHAAU
 tile_set = SubResource("TileSet_dukq1")
 
 [node name="ResourceLayer" type="TileMapLayer" parent="."]
+visible = false
 z_index = 1
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAA9ADIAAAAAAA4AAAA+ADIAAAAAAA4AAAA/ADIAAAAAAA4AAABAADIAAAAAAA4AAABBADIAAAAAAA4AAABCADIAAAAAAA4AAABDADIAAAAAAA4AAABEADIAAAAAAA4AAABFADIAAAAAAA4AAABGADIAAAAAAA4AAADT//D/AAAAAA4AAADV/wIAAAAAAA4AAADW/wcAAAAAAA4AAADg/xUAAAAAAA4AAADm/wEAAAAAAA4AAADm/wQAAAAAAA4AAADr//b/AAAAAA4AAADs/+j/AAAAAA4AAAD5//3/AAAAAA4AAAACABkAAAAAAA4AAAAEAOj/AAAAAA4AAAAHABgAAAAAAA4AAAANABUAAAAAAA4AAAAjAA0AAAAAAA4AAAAkABUAAAAAAA4AAAAuAAoAAAAAAA4AAAANAPb/AAAAAA4AAAAmAPb/AAAAAA4AAAALAAUAAAAAAA4AAAAKAAsAAAAAAA4AAAAGAAMAAAAAAA4AAAA=")
@@ -636,39 +639,51 @@ position = Vector2(-117.565, -36.575)
 position = Vector2(32, -30)
 
 [node name="resource" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(319, 389)
 
 [node name="resource2" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(1821, 1044)
 
 [node name="resource3" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(-1441, 1121)
 
 [node name="resource4" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(-1571, -1512)
 
 [node name="resource5" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(2829, 728)
 
 [node name="resource6" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(-1375, 353)
 
 [node name="resource7" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(2043, 1549)
 
 [node name="resource8" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(-2630, 839)
 
 [node name="resource9" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(-2455, -420)
 
 [node name="resource10" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(-654, -832)
 
 [node name="resource11" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(595, -1453)
 
 [node name="resource12" parent="." instance=ExtResource("6_06ksj")]
+visible = false
 position = Vector2(2999, -879)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
