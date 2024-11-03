@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var notice: AcceptDialog = find_child("AcceptDialog")
 @onready var player = get_parent()
 @onready var base = get_parent().get_parent().get_node("Base")
+@onready var resource_count: Label = find_child("Resource Count")
 
 var item_pending = null	
 
@@ -21,6 +22,7 @@ func open_shop():
 	player.on_base = base
 	player.update_base()
 	player.on_base = null
+	resource_count.text = str(base.resource_count)
 	get_tree().paused = true
 	exit_button.pressed.connect(close_shop)
 	for item in items.get_children():

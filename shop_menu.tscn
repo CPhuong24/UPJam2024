@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqpgdwtspewm8"]
+[gd_scene load_steps=4 format=3 uid="uid://dqpgdwtspewm8"]
 
 [ext_resource type="Script" path="res://shop_ui.gd" id="2_2hkpk"]
+[ext_resource type="Texture2D" uid="uid://doa3x015iejj1" path="res://Art Assests/resource.png" id="2_wl0c8"]
 [ext_resource type="PackedScene" uid="uid://d1mbjy1gbp4r8" path="res://shop_item.tscn" id="3_oiqkc"]
 
 [node name="ShopMenu" type="CanvasLayer"]
@@ -28,10 +29,25 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Shop" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Shop" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(285, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 91
 text = "Shop"
+
+[node name="Resource Count" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 91
+text = "000"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_wl0c8")
 
 [node name="ItemList" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 300)
