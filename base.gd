@@ -2,15 +2,17 @@ extends Area2D
 
 @export var resource_count = 0
 const DEFAULT_LIGHT_ENERGY = 0.5
+const DEFAULT_LIGHT_RADIUS = 1000
 const LIGHT_ENERGY_CHANGE_RATE = 0.1
 @export var light_energy = 0.5
 @onready var player = get_parent().get_node('Player')
 @onready var light = $Fire/PointLight2D
 @onready var label = $Label
 @onready var progress_bar = $TextureProgressBar
-const BASE_RESOURCE_CONSUMPTION = 2 # how quickly in durability/sec the base consumes resources
+const BASE_RESOURCE_CONSUMPTION = 10 # how quickly in durability/sec the base consumes resources
 const RESOURCE_DURABILITY = 100
-var resource_consumption_modifier = 0 # modifiers which slow down or speed up resource consumption by the base
+var resource_consumption_modifier = 1 # modifiers which slow down or speed up resource consumption by the base
+var light_radius_modifier = 1
 var consumption_rate = BASE_RESOURCE_CONSUMPTION
 var current_durability = RESOURCE_DURABILITY
 
@@ -21,6 +23,10 @@ func _ready() -> void:
 func update():
 	label.text = str(resource_count)
 
+func update_light_radius():
+	light.texture.height = DEFAULT_LIGHT_RADIUS * light_radius_modifier
+	light.texture.width = DEFAULT_LIGHT_RADIUS * light_radius_modifier
+
 func _on_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	player.on_base = self
 
@@ -29,7 +35,7 @@ func _on_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, l
 	
 func _process(delta: float) -> void:
 	if current_durability > 0:
-		current_durability -= consumption_rate * delta
+		current_durability -= (consumption_rate * resource_consumption_modifier) * delta
 		if light_energy < DEFAULT_LIGHT_ENERGY:
 			light_energy += LIGHT_ENERGY_CHANGE_RATE * delta
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cupwiadsvt60a"]
+[gd_scene load_steps=10 format=3 uid="uid://cupwiadsvt60a"]
 
 [ext_resource type="Script" path="res://sanity.gd" id="1_htj3k"]
 [ext_resource type="Texture2D" uid="uid://ck8j78rrviaho" path="res://healthbarUnder.png" id="1_mbdat"]
@@ -6,7 +6,9 @@
 [ext_resource type="FontFile" uid="uid://rg16im737d84" path="res://limbo_font__by_alex484000-d5dthys.ttf" id="3_vw54w"]
 [ext_resource type="Script" path="res://resource_hud.gd" id="5_rd813"]
 [ext_resource type="Texture2D" uid="uid://lgvatuqj1mb7" path="res://arrow.png" id="6_1ldqk"]
+[ext_resource type="Texture2D" uid="uid://doa3x015iejj1" path="res://Art Assests/resource.png" id="6_ysvp4"]
 [ext_resource type="Script" path="res://compass.gd" id="7_prgjv"]
+[ext_resource type="Script" path="res://dowsing_rod.gd" id="9_viw56"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -58,18 +60,19 @@ texture_under = ExtResource("1_mbdat")
 texture_progress = ExtResource("2_oqm1l")
 script = ExtResource("5_rd813")
 
-[node name="Label" type="Label" parent="TextureProgressBar2"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -101.5
-offset_right = 101.5
-offset_bottom = 51.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureProgressBar2"]
+layout_mode = 0
+offset_left = 43.91
+offset_top = 83.53
+offset_right = 378.91
+offset_bottom = 211.53
+
+[node name="TextureRect" type="TextureRect" parent="TextureProgressBar2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_ysvp4")
+
+[node name="Label" type="Label" parent="TextureProgressBar2/HBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vw54w")
 theme_override_font_sizes/font_size = 50
 text = "Resources
@@ -108,3 +111,20 @@ grow_horizontal = 2
 pivot_offset = Vector2(51, 28)
 texture = ExtResource("6_1ldqk")
 script = ExtResource("7_prgjv")
+
+[node name="Dowsing Rod" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.5
+offset_top = -100.04
+offset_right = 51.5
+offset_bottom = -44.04
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(51, 28)
+texture = ExtResource("6_1ldqk")
+script = ExtResource("9_viw56")
