@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bwvplt60j4m74"]
+[gd_scene load_steps=18 format=4 uid="uid://bwvplt60j4m74"]
 
 [ext_resource type="Texture2D" uid="uid://bmeq2t03daa0l" path="res://Tilemap_Flat.png" id="1_gqa5w"]
 [ext_resource type="Texture2D" uid="uid://ch2odkwcufvh0" path="res://Art Assests/Land Tileset.png" id="1_xepfa"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cupwiadsvt60a" path="res://hud.tscn" id="5_ii0p0"]
 [ext_resource type="PackedScene" uid="uid://dwltit8ivhofr" path="res://resource.tscn" id="6_06ksj"]
 [ext_resource type="PackedScene" uid="uid://nd5gsw8ahina" path="res://base.tscn" id="7_117oc"]
+[ext_resource type="Texture2D" uid="uid://cxptknh4qqk6y" path="res://sun_fragments/sun_fragment_1.png" id="8_jx5r3"]
+[ext_resource type="Texture2D" uid="uid://drgnm1fohxnmh" path="res://sun_fragments/sun_fragment_2.png" id="9_deooc"]
+[ext_resource type="Texture2D" uid="uid://xd6a24jgl0ke" path="res://sun_fragments/sun_fragment_3.png" id="10_0dih5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2b4u"]
 texture = ExtResource("1_xepfa")
@@ -597,6 +600,8 @@ tile_size = Vector2i(64, 64)
 uv_clipping = true
 sources/0 = SubResource("TileSetAtlasSource_wnbye")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_75wlx"]
+
 [node name="World" type="Node2D"]
 
 [node name="HUD" parent="." instance=ExtResource("5_ii0p0")]
@@ -663,5 +668,35 @@ position = Vector2(59, 119)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[node name="sun_frag_1" type="Area2D" parent="."]
+position = Vector2(1500, -1200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sun_frag_1"]
+shape = SubResource("CircleShape2D_75wlx")
+
+[node name="Sprite2D" type="Sprite2D" parent="sun_frag_1"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_jx5r3")
+
+[node name="sun_frag_2" type="Area2D" parent="."]
+position = Vector2(-1500, -1400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sun_frag_2"]
+shape = SubResource("CircleShape2D_75wlx")
+
+[node name="Sprite2D" type="Sprite2D" parent="sun_frag_2"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_deooc")
+
+[node name="sun_frag_3" type="Area2D" parent="."]
+position = Vector2(-600, 1600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sun_frag_3"]
+shape = SubResource("CircleShape2D_75wlx")
+
+[node name="Sprite2D" type="Sprite2D" parent="sun_frag_3"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_0dih5")
 
 [editable path="HUD"]
