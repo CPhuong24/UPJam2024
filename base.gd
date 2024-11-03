@@ -53,11 +53,20 @@ func _process(delta: float) -> void:
 	progress_bar.value = current_durability
 	
 	# Set fire strength/animation.
-	if light_energy > DEFAULT_LIGHT_ENERGY * 0.75:
-		$Fire.play("default")
-	elif light_energy > DEFAULT_LIGHT_ENERGY * 0.5:
-		$Fire.play("medium")
-	elif light_energy > DEFAULT_LIGHT_ENERGY * 0.25:
-		$Fire.play("small")
+	var fire_scale = Vector2(current_durability * 0.01, current_durability * 0.01)
+	var default_fire = Vector2(1,1)
+	$Fire.play("Fire")
+	
+	# Make fire smaller when no more logs
+	if resource_count == 0:
+		$Fire.set_scale(fire_scale)
 	else:
-		$Fire.play("nofire")
+		$Fire.set_scale(default_fire)
+	#if light_energy > DEFAULT_LIGHT_ENERGY * 0.75:
+		#$Fire.scale
+	#elif light_energy > DEFAULT_LIGHT_ENERGY * 0.5:
+		#$Fire.play("medium")
+	#elif light_energy > DEFAULT_LIGHT_ENERGY * 0.25:
+		#$Fire.play("small")
+	#else:
+		#$Fire.play("nofire")
