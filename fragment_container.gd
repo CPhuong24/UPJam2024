@@ -9,7 +9,6 @@ extends VBoxContainer
 
 func _ready() -> void:
 	base.resource_consumption_modifier = 0
-	await get_tree().create_timer(0.5).timeout
 	animation.play("fragment animation")
 	await get_tree().create_timer(1.5).timeout
 	frag1.texture = load("res://sun_fragments/sun_fragment_1_greyscale.png")
