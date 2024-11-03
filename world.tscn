@@ -667,9 +667,6 @@ position = Vector2(595, -1453)
 [node name="resource12" parent="." instance=ExtResource("6_06ksj")]
 position = Vector2(2999, -879)
 
-[node name="Player" parent="." instance=ExtResource("4_7hmd0")]
-position = Vector2(59, 119)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.144063, 0.144063, 0.144063, 1)
 
@@ -703,4 +700,9 @@ shape = SubResource("CircleShape2D_75wlx")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("10_0dih5")
 
+[node name="Player" parent="." instance=ExtResource("4_7hmd0")]
+z_index = 1
+position = Vector2(59, 119)
+
 [editable path="HUD"]
+[editable path="Player"]

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var resource_count = 100
+@export var resource_count = 0
 const DEFAULT_LIGHT_ENERGY = 0.5
 const DEFAULT_LIGHT_RADIUS = 1000
 const LIGHT_ENERGY_CHANGE_RATE = 0.1

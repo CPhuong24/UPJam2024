@@ -109,7 +109,7 @@ func _process(delta):
 		if on_resource != null:
 			update_resources()
 		elif on_shop != null:
-			$"PauseMenu2".open_shop()
+			$ShopMenu.open_shop()
 		elif on_base != null:
 			update_base()
 	
