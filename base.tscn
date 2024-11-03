@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d0uhf7180fpt6" path="res://fire3.png" id="9_gb6j2"]
 [ext_resource type="Texture2D" uid="uid://b4pxtp2de6jpn" path="res://nofire.png" id="10_1bn55"]
 [ext_resource type="Texture2D" uid="uid://b4jduo0e7vql" path="res://fire2.png" id="10_gdp54"]
+[ext_resource type="Texture2D" uid="uid://bsy840sllx27b" path="res://Art Assests/light.tres" id="7_6d40q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avru2"]
 size = Vector2(128, 192)
