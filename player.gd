@@ -10,7 +10,7 @@ const DEFAULT_BASE_RADIUS = 500 # distance where player is considered near/far b
 const DEFAULT_INVENTORY_LIMIT = 5 # cap for player resource count
 const DEFAULT_SANITY_CAP = 100 # cap at which sanity can no longer be increased
 const DEFAULT_SANITY_LOSS = -1 # rate of sanity loss when away from base in sanity per second
-const DEFAULT_SANITY_GAIN = 10 # rate of sanity gain when new base in sanity per second
+const DEFAULT_SANITY_GAIN = 5 # rate of sanity gain when new base in sanity per second
 const LOGGING_FREQ_MSEC = 1000 # Period in milliseconds between logging outputs
 
 @export var inventory_limit = DEFAULT_INVENTORY_LIMIT

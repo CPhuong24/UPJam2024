@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqbi5e052spf3"]
+
+[ext_resource type="Texture2D" uid="uid://bkpsamke8e1y7" path="res://House_Red.png" id="1_ffmo4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pikjq"]
+size = Vector2(128, 192)
+
+[node name="Shop" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pikjq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
+texture = ExtResource("1_ffmo4")

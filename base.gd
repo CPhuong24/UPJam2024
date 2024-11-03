@@ -8,9 +8,9 @@ const LIGHT_ENERGY_CHANGE_RATE = 0.1
 @onready var light = $Fire/PointLight2D
 @onready var label = $Label
 @onready var progress_bar = $TextureProgressBar
-const BASE_RESOURCE_CONSUMPTION = 2 # how quickly in durability/sec the base consumes resources
+const BASE_RESOURCE_CONSUMPTION = 5 # how quickly in durability/sec the base consumes resources
 const RESOURCE_DURABILITY = 100
-var resource_consumption_modifier = 0 # modifiers which slow down or speed up resource consumption by the base
+var resource_consumption_modifier_multiplier = 1 # modifiers which slow down or speed up resource consumption by the base multiplicitavely
 var consumption_rate = BASE_RESOURCE_CONSUMPTION
 var current_durability = RESOURCE_DURABILITY
 
@@ -29,7 +29,7 @@ func _on_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, l
 	
 func _process(delta: float) -> void:
 	if current_durability > 0:
-		current_durability -= consumption_rate * delta
+		current_durability -= (consumption_rate * resource_consumption_modifier_multiplier) * delta
 		if light_energy < DEFAULT_LIGHT_ENERGY:
 			light_energy += LIGHT_ENERGY_CHANGE_RATE * delta
 	else:
