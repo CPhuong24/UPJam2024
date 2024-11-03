@@ -9,7 +9,7 @@ var bought = false
 @onready var name_label = $Button/HBoxContainer/VBoxContainer/Name
 @onready var description_label = $Button/HBoxContainer/VBoxContainer/Description
 @onready var price_label = $Button/HBoxContainer/Price
-@onready var resource_icon = $"ButtonHBoxContainer/Resource Icon"
+@onready var resource_icon = $"Button/HBoxContainer/Resource Icon"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
