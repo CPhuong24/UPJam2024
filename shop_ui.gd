@@ -37,7 +37,7 @@ func apply_item_effect():
 		"Torch":
 			player.light_radius_modifier *= 2
 		"Carved Animal":
-			player.sanity_loss_modifier_multiplier *= 0.5
+			player.sanity_loss_modifier *= 0.5
 		"Bonfire":
 			player.base_radius_modifier *= 1.5
 			base.light_radius_modifier *= 1.5
