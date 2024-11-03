@@ -51,6 +51,7 @@ var db_modifier = 0.25 # modifier which increases or decreases the breathing sou
 @onready var base = get_parent().get_node('Base')
 @onready var shop = get_parent().get_node('Shop')
 @onready var hud = get_parent()	.get_node("HUD")
+@onready var tooltip= hud.get_node("Tooltip")
 @onready var light = $PointLight2D
 @onready var world = get_parent()
 @onready var breathing = $SFXBreathing
@@ -133,6 +134,19 @@ func _process(delta):
 			$ShopMenu.open_shop()
 		elif on_base != null:
 			update_base()
+			
+	# Tooltip
+	var interact_key_name = OS.get_keycode_string(DisplayServer.keyboard_get_keycode_from_physical(InputMap.action_get_events("interact")[0]['physical_keycode'])) 
+	if on_sun_frag != null:
+		tooltip.text = "Press " + interact_key_name + " to collect sun fragement"
+	elif on_resource != null and resource_count < inventory_limit:
+		tooltip.text = "Press " + interact_key_name + " to chop"
+	elif on_shop and not get_tree().paused:
+		tooltip.text = "Press " + interact_key_name + " to open shop"
+	elif on_base and (resource_count > 0):
+		tooltip.text = "Press " + interact_key_name + " to deposit"
+	else:
+		tooltip.text = ""
 	
 	# Sanity Calculations
 	distance_to_base = base.global_position.distance_to(global_position)
