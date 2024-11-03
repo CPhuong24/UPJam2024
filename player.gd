@@ -19,6 +19,7 @@ const LOGGING_FREQ_MSEC = 1000 # Period in milliseconds between logging outputs
 
 
 var isRight = true
+var is_dead = false
 var time_curr = 0
 var time_last_logged = 0
 
@@ -62,6 +63,8 @@ func _input(event: InputEvent) -> void:
 		$PauseMenu.pause()
 
 func _physics_process(_delta):
+	if is_dead:
+		return
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_direction * speed
 	move_and_slide()
@@ -122,6 +125,7 @@ func _process(delta):
 		time_last_logged = time_curr
 
 func die() -> void:
+	is_dead = true
 	print("Player is dead")
 	if isRight == true:
 		character.play("dead_right")
