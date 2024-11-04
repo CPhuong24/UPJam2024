@@ -14,33 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://drgnm1fohxnmh" path="res://sun_fragments/sun_fragment_2.png" id="11_obm8f"]
 [ext_resource type="Texture2D" uid="uid://xd6a24jgl0ke" path="res://sun_fragments/sun_fragment_3.png" id="12_amq5w"]
 
-[sub_resource type="Animation" id="Animation_78bdi"]
-resource_name = "fragment animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.1, 0.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(900, 170), Vector2(950, 462.29)]
-}
-
 [sub_resource type="Animation" id="Animation_ujpiy"]
 length = 0.001
 tracks/0/type = "value"
@@ -66,6 +39,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(9.83, 462.29)]
+}
+
+[sub_resource type="Animation" id="Animation_78bdi"]
+resource_name = "fragment animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(900, 170), Vector2(950, 462.29)]
 }
 
 [sub_resource type="Animation" id="Animation_merwb"]

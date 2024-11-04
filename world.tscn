@@ -571,6 +571,7 @@ color = Color(0.144063, 0.144063, 0.144063, 1)
 
 [node name="sun_frag_1" type="Area2D" parent="."]
 position = Vector2(1500, -1200)
+collision_layer = 0
 script = ExtResource("9_wfosc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sun_frag_1"]
@@ -582,6 +583,7 @@ texture = ExtResource("8_jx5r3")
 
 [node name="sun_frag_2" type="Area2D" parent="."]
 position = Vector2(-1500, -1400)
+collision_layer = 0
 script = ExtResource("9_wfosc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sun_frag_2"]
@@ -593,6 +595,7 @@ texture = ExtResource("9_deooc")
 
 [node name="sun_frag_3" type="Area2D" parent="."]
 position = Vector2(-600, 1600)
+collision_layer = 0
 script = ExtResource("9_wfosc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sun_frag_3"]
